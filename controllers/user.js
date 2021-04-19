@@ -19,8 +19,8 @@ const usuarioPost = async(req = request, res = response) => {
         });
     }
 
-    const { nombre, correo, password, estado } = req.body;
-    const usuario = new Usuario({ nombre, correo, password, estado })
+    const { nombre, correo, password, estado, rol } = req.body;
+    const usuario = new Usuario({ nombre, correo, password, estado, rol })
     const salt = bcrypt.genSaltSync()
     usuario.password = bcrypt.hashSync(password, salt);
     //Correo existe

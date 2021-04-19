@@ -16,7 +16,11 @@ const usuarioSchema = Schema({
     estado: {
         type: Boolean,
         default: true,
-    }
+    },
+    rol: {
+        type: String,
+        require: [true, 'El rol es requerido'],
+    },
 })
 
 module.exports = model('Usuario', usuarioSchema)
