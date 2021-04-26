@@ -23,13 +23,15 @@ const login = async(req = request, res = response) => {
         }
         //Verificar que la contraseña sea correcta
         const validarPassword = bcryptjs.compareSync(password, usuario.password);
-        if (!usuario.estado) {
+        if (!validarPassword) {
             return res.status(400).json({
                 msg: 'Usuario o contraseña incorrecto (contraseña)'
             })
         }
+
         //Crear token
         const token = await generarToken(usuario.id);
+
         //respuesta
         res.json({
             msg: 'Login existoso',
@@ -37,6 +39,7 @@ const login = async(req = request, res = response) => {
             password,
             token,
         });
+
     } catch (error) {
         console.log(error);
         return res.status(500).json({

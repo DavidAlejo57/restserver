@@ -3,18 +3,22 @@ const { Router } = require('express');
 const {
     productoDelete,
     productoGet,
+    productoGetID,
     productoPost,
     productoPut
 } = require('../controllers/productos');
+const { validarJWT } = require('../middlewares/validar-jwt');
 
 const router = Router();
 
-router.get('/', productoGet);
+router.get('/', validarJWT, productoGet);
 
-router.post('/', productoPost);
+router.get('/:id', validarJWT, productoGetID);
 
-router.put('/:id', productoPut);
+router.post('/', validarJWT, productoPost);
 
-router.delete('/:id', productoDelete);
+router.put('/:id', validarJWT, productoPut);
+
+router.delete('/:id', validarJWT, productoDelete);
 
 module.exports = router;

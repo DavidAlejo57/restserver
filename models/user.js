@@ -19,7 +19,7 @@ const usuarioSchema = Schema({
     },
     rol: {
         type: String,
-        require: [true, 'El rol es requerido'],
+        default: 'USER_ROLE'
     },
 })
 

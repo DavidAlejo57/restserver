@@ -30,6 +30,16 @@ const usuarioPost = async(req = request, res = response) => {
             msg: 'Usuario ya existe en la base de datos'
         })
     }
+
+    //Comprueba si el rol es correcto o si no ingresa el rol
+    if (rol === 'ADMIN_ROLE' || rol === undefined) {
+
+    } else {
+        return res.status(400).json({
+            msg: 'El rol es incorrecto'
+        })
+    }
+
     usuario.save();
 
     res.json({

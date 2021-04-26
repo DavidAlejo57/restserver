@@ -14,6 +14,20 @@ const productoSchema = Schema({
         type: Number,
         require: [true, 'El precio es requerido'],
     },
+    descripcion: {
+        type: String,
+        require: [true, 'La descripcion es requerida']
+    },
+    usuario: {
+        type: Schema.Types.ObjectId,
+        ref: 'Usuario',
+        require: [true, 'El id del usuario es requerido']
+    },
+    categoria: {
+        type: Schema.Types.ObjectId,
+        ref: 'Categoria',
+        require: [true, 'El id de la categoria es requerida']
+    }
 })
 
 module.exports = model('Producto', productoSchema)

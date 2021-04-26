@@ -9,6 +9,7 @@ class Server {
         this.UsuariosPath = '/usuarios';
         this.authPath = '/auth';
         this.ProductosPath = '/productos';
+        this.CategoriaPath = '/categorias';
         //Conexion
         this.dbConexion();
         //Middlewares
@@ -35,6 +36,7 @@ class Server {
         this.app.use(this.authPath, require('../routes/auth'));
         this.app.use(this.UsuariosPath, require('../routes/user'));
         this.app.use(this.ProductosPath, require('../routes/productos'));
+        this.app.use(this.CategoriaPath, require('../routes/categorias'));
     }
 
     listen() {
